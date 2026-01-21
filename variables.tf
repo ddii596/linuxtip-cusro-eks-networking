@@ -1,54 +1,48 @@
 variable "project_name" {
-  type = string
+  type        = string
+  description = "Nome do projeto"
 }
 
 variable "region" {
-  type = string
-
+  type        = string
+  description = "Região default do projeto"
 }
 
 variable "vpc_cidr" {
-  type = string
+  type    = string
+  default = "CIDR principal da VPC"
 }
 
-variable "aditional_vpc_cidrs" {
+variable "vpc_additional_cidrs" {
   type        = list(string)
+  description = "Lista de CIDR's adicionais da VPC"
   default     = []
-  description = "lista de cidrs adcionais"
-
 }
 
 variable "public_subnets" {
-  description = "Lista de subnets publicas da vpc"
+  description = "Lista de Public Subnets da VPC"
   type = list(object({
     name              = string
     cidr              = string
     availability_zone = string
   }))
-
-
 }
 
 variable "private_subnets" {
-  description = "Lista de subnets privadas da vpc"
+  description = "Lista de Private Subnets da VPC"
   type = list(object({
     name              = string
     cidr              = string
     availability_zone = string
   }))
-
-
 }
 
-
 variable "database_subnets" {
+  description = "Lista de Database Subnets da VPC"
   default     = []
-  description = "Lista de subnets database"
   type = list(object({
     name              = string
     cidr              = string
     availability_zone = string
   }))
-
-
 }
